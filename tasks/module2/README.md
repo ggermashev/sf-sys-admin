@@ -42,8 +42,11 @@ echo "Task5 finished successfully. Check archive.tar"
 ```bash
 available=0
 unavailable=0
+#Хосты для проверки
 hosts=(192.168.0.0 192.168.0.1 127.0.0.1 192.168.1.1 192.168.0.2 193.168.0.0 193.168.0.1)
 
+# Перебираем хосты по одному и проверяем
+# В случае успеха хост доступен, иначе - нет
 for host in "${hosts[@]}"; do
   ping -c 1 -s 1 -W 1 $host >/dev/null && { echo "Хост $host доступен"; available=$(( available + 1 )); } || { echo "Хост $host недоступен"; unavailable=$(( unavailable + 1 )); }
 done
@@ -58,6 +61,7 @@ echo "Не доступно: $unavailable"
 dir_path=$1
 keyword=$2
 
+#Обработка входных данных
 if [[ -z "$dir_path" || -z "$keyword" ]]; then
   echo "Передайте директорию для поиска и ключевое слово. Передано: $dir_path , $keyword"
   exit 1
@@ -66,11 +70,13 @@ fi
 
 total=0
 
+#Получение списка файлов
 files=()
 while IFS=  read -r -d $'\0'; do
     files+=("$REPLY")
 done < <(find "${dir_path}" -name "*.log" -type f -print0)
 
+# Фильтрация строк и подсчет
 for file in "${files[@]}"; do
   cat "$file" | grep "$keyword" > ../count.txt
   lines="$(wc -l ../count.txt | awk '{print $1}')"

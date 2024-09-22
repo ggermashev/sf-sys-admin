@@ -11,6 +11,7 @@
 dir_path=$1
 keyword=$2
 
+#Обработка входных данных
 if [[ -z "$dir_path" || -z "$keyword" ]]; then
   echo "Передайте директорию для поиска и ключевое слово. Передано: $dir_path , $keyword"
   exit 1
@@ -19,11 +20,13 @@ fi
 
 total=0
 
+#Получение списка файлов
 files=()
 while IFS=  read -r -d $'\0'; do
     files+=("$REPLY")
 done < <(find "${dir_path}" -name "*.log" -type f -print0)
 
+# Фильтрация строк и подсчет
 for file in "${files[@]}"; do
   cat "$file" | grep "$keyword" > ../count.txt
   lines="$(wc -l ../count.txt | awk '{print $1}')"

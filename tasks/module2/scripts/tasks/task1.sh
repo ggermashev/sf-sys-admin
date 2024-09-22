@@ -9,8 +9,11 @@
 
 available=0
 unavailable=0
+#Хосты для проверки
 hosts=(192.168.0.0 192.168.0.1 127.0.0.1 192.168.1.1 192.168.0.2 193.168.0.0 193.168.0.1)
 
+# Перебираем хосты по одному и проверяем
+# В случае успеха хост доступен, иначе - нет
 for host in "${hosts[@]}"; do
   ping -c 1 -s 1 -W 1 $host >/dev/null && { echo "Хост $host доступен"; available=$(( available + 1 )); } || { echo "Хост $host недоступен"; unavailable=$(( unavailable + 1 )); }
 done
