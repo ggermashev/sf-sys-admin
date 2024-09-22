@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  module2:
+    build:
+      context: ./tasks/module2
+    volumes:
+      - ./tasks/module2/conveyers:/task/conveyers
+      - ./tasks/module2/scripts:/task/scripts
+    tty: true
+    

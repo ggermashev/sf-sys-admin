@@ -1,0 +1,6 @@
+  0 ../dir1/file1.txt
+  0 ../dir2/file2.txt
+  2 ../directory_comparison.txt
+  1 ../system_monitoring.txt
+  2 ../textfile.txt
+  5 total
