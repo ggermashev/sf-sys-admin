@@ -8,4 +8,20 @@ services:
       - ./tasks/module2/conveyers:/task/conveyers
       - ./tasks/module2/scripts:/task/scripts
     tty: true
+
+  module3-task1-deb:
+    build:
+      context: ./tasks/module3/task1/deb
+    volumes:
+      - ./tasks/module3/task1/deb/package:/task/package
+      - ./tasks/module3/task1/deb/src:/task/src
+    tty: true
+
+  module3-task1-rpm:
+    build:
+      context: ./tasks/module3/task1/rpm
+    volumes:
+      - ./tasks/module3/task1/rpm/src:/task/src
+      - ./tasks/module3/task1/rpm/package:/task/package
+    tty: true
     

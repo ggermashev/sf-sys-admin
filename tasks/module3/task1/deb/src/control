@@ -1,0 +1,7 @@
+Package: mypackage
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Maintainer: Grigorii Germashev me@me.com
+Description: description

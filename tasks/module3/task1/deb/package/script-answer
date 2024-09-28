@@ -1,0 +1,6 @@
+Файл /var/log/bootstrap.log содержит 6 строк с ключевым словом status.
+Файл /var/log/apt/history.log содержит 0 строк с ключевым словом status.
+Файл /var/log/apt/term.log содержит 0 строк с ключевым словом status.
+Файл /var/log/dpkg.log содержит 2498 строк с ключевым словом status.
+Файл /var/log/alternatives.log содержит 0 строк с ключевым словом status.
+Общее количество строк с ключевым словом status по всем лог-файлам в директории / - 2504
