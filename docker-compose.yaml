@@ -24,4 +24,14 @@ services:
       - ./tasks/module3/task1/rpm/src:/task/src
       - ./tasks/module3/task1/rpm/package:/task/package
     tty: true
+
+  module3-task2-lvm-raid:
+    build:
+      context: ./tasks/module3/task2/lvm_raid+raid_lvm
+    privileged: true
+    volumes:
+      - ./tasks/module3/task2/lvm_raid+raid_lvm/package:/task/package
+      - ./tasks/module3/task2/lvm_raid+raid_lvm/src:/task/src
+    tty: true
+
     
