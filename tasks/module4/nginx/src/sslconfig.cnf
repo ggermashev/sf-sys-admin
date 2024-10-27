@@ -1,0 +1,11 @@
+[req]
+default_bit = 4096
+distinguished_name = req_distinguished_name
+prompt = no
+
+[req_distinguished_name]
+countryName             = RU
+stateOrProvinceName     = Moscow
+localityName            = Moscow
+organizationName        = SF
+commonName              = 127.0.0.1

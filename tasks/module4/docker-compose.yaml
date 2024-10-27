@@ -1,0 +1,64 @@
+version: '3.8'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      args:
+        with-http_ssl_module: true
+
+    ports:
+      - 8080:80
+      - 8181:443
+    volumes:
+      - ./nginx/src:/task/src
+    tty: true
+    networks:
+      - inner-net
+
+  apache:
+    build:
+      context: ./apache
+    ports:
+      - 9090:80
+      - 9191:443
+      - 9292:444
+    privileged: true
+    volumes:
+      - ./apache/src:/task/src
+    tty: true
+    networks:
+      - inner-net
+
+  server1:
+    build:
+      context: ./server1
+    ports:
+      - 8888:80
+    volumes:
+      - ./server1/src:/task/src
+    tty: true
+    stdin_open: true
+    networks:
+      - inner-net
+    environment:
+      DEBUG: "true"
+  
+  server2:
+    build:
+      context: ./server2
+    ports:
+      - 9999:80
+    volumes:
+      - ./server2/src:/task/src
+    tty: true
+    stdin_open: true
+    networks:
+      - inner-net
+    environment:
+      DEBUG: "true"
+
+networks:
+  inner-net:
+    name: inner-net
+    
